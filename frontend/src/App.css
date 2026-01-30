@@ -1,0 +1,321 @@
+/* General Styling for Background */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url("backk.jpg");
+}
+
+/* Centered Container */
+.container {
+  margin: auto;
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  background-image: url("backk.jpg") no-repeat center center;
+}
+
+/* Login Background */
+.login-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("backk.jpg") no-repeat center center;
+  background-size: 100% 100%;
+}
+
+/* Logged-in Background */
+.logged-in-background {
+  background-image: url("backk.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gradient Animation for Background */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Heading Styles */
+h1 {
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+}
+
+/* Header and Login Box */
+.App-header {
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  padding: 30px;
+  background-color: #fcfcfc;
+  border-radius: 12px;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+.modify-code-input {
+  width: 90%;  /* Adjust width */
+  height: 225px; /* Increase height */
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: linear-gradient(135deg, #c8d163, #83a2ba);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
+.modify-code-container {
+  display: flex;
+  justify-content: center;  /* Center horizontally */
+  align-items: flex-start;  /* Align at the top */
+  gap: 3cm; /* Space between input and output boxes */
+}
+
+/* Input and Button Styling */
+input, select, textarea {
+  padding: 12px;
+  margin: 12px 0;
+  width: 80%;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background: linear-gradient(135deg, #c8d163, #83a2ba);
+  color: black;
+  font-size: 16px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 4px solid #4b4747d9;
+}
+.option-buttons {
+  display: flex;
+  justify-content: center; /* Centers buttons */
+  gap: 100px; /* Adds space between buttons */
+  margin-top: 20px; /* Adds space above */
+  margin-bottom: 30px; /* Adds space below */
+}
+
+.option-buttons button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.option-buttons button:hover {
+  background: #ddd;
+}
+
+/* Button Styling */
+button {
+  padding: 12px 25px;
+  margin-top: 15px;
+  font-size: 16px;
+  background-color: #aee80c;
+  color: black;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #86d6ee;
+  transform: scale(1.05);
+}
+
+/* Sign-up Button */
+.signup-button {
+  background-color: #7cf5ed;
+  padding: 12px 25px;
+  font-size: 16px;
+  color: black;
+  border-radius: 25px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.signup-button:hover {
+  background-color: #388e3c;
+}
+
+/* Back Button */
+.back-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff4757;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+  display: none;
+}
+
+.back-button:hover {
+  background-color: #d63031;
+}
+
+.logged-in-background .back-button {
+  display: block;
+}
+
+/* Tabs and Descriptions Styling */
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.tabs-container button {
+  width: 45%;
+  padding: 12px;
+  margin: 0 10px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: #fbff00;
+  color: rgba(255, 255, 255, 0.798);
+  cursor: pointer;
+}
+
+.tabs-container button:hover {
+  background-color: #0056b3;
+}
+
+.tabs-container button.active {
+  background-color: #4071a2;
+}
+
+/* Ensure input and output sections are side by side */
+.content-wrapper {
+  display: flex;
+  justify-content: right;
+  align-items: flex-start;
+  gap: 40px;
+  width: 120%;
+  margin-top: 20px;
+}
+
+/* Left Section: Input */
+.input-section {
+  flex: 1;
+  text-align: left;
+  max-width: 60%;
+}
+
+/* Right Section: Output */
+.output-section {
+  flex: 1;
+  max-width: 45%;
+}
+
+/* Textbox Styling for Input & Output */
+.large-textbox {
+  width: 100%;
+  height: 380px;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border: 2px solid #bbb;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+/* Generate Code Section Styling */
+.generate-textarea {
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: black;
+  border: 2px solid #a5e6f1;
+  border-radius: 8px;
+  font-size: 16px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Modify Code Section Styling */
+.modify-textarea {
+  width: 100%;
+  height: 300px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f4f4f4;
+  border: 2px solid #bbb;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+/* Select for Language */
+select {
+  width: 80%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 8px;
+  background-color: #d4d58a;
+  color: black;
+  border: 2px solid #4b4747d9;
+  font-size: 16px;
+}
+
+/* Adjustments for all buttons to be on the next line and centered */
+button[type="submit"], .tabs-container button {
+  display: block;
+  width: 80%;
+  margin: 15px auto;
+}
+
+/* Loader Animation */
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #09f;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-section, .output-section {
+    max-width: 90%;
+  }
+}
