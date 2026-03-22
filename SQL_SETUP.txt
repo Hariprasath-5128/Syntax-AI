@@ -1,0 +1,95 @@
+Syntax AI MySQL setup
+
+This SQL matches the current project behavior in frontend/src/server.js.
+It creates the database and the single table used by the app.
+
+1. Open MySQL
+mysql -u root -p
+
+2. Create the database
+CREATE DATABASE IF NOT EXISTS react_mysql_db;
+
+3. Use the database
+USE react_mysql_db;
+
+4. Create the table used by signup, login, and option storage
+CREATE TABLE IF NOT EXISTS user_data (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    user_option VARCHAR(100) DEFAULT NULL,
+    generate_code_prompt TEXT DEFAULT NULL,
+    generate_code_language VARCHAR(100) DEFAULT NULL,
+    modify_code_input LONGTEXT DEFAULT NULL,
+    modify_code_logic LONGTEXT DEFAULT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+5. Add an index to speed up login lookups
+CREATE INDEX idx_user_login ON user_data (username, password);
+
+6. Optional: prevent duplicate usernames on signup
+ALTER TABLE user_data
+ADD CONSTRAINT uq_user_data_username UNIQUE (username);
+
+7. Verify the table structure
+DESCRIBE user_data;
+
+8. Optional test insert for a signup-style row
+INSERT INTO user_data (username, password)
+VALUES ('testuser', 'testpass');
+
+9. Optional test insert for a Generate Code action row
+INSERT INTO user_data (
+    username,
+    password,
+    user_option,
+    generate_code_prompt,
+    generate_code_language,
+    modify_code_input,
+    modify_code_logic
+) VALUES (
+    'testuser',
+    'testpass',
+    'Generate Code',
+    'Write a Python function to reverse a string',
+    'Python',
+    NULL,
+    NULL
+);
+
+10. Optional test insert for a Modify Code action row
+INSERT INTO user_data (
+    username,
+    password,
+    user_option,
+    generate_code_prompt,
+    generate_code_language,
+    modify_code_input,
+    modify_code_logic
+) VALUES (
+    'testuser',
+    'testpass',
+    'Modify Code',
+    NULL,
+    NULL,
+    'for(i=0;i<n;i++){sum+=i;}',
+    'Optimize and modernize this code'
+);
+
+11. Verify inserted rows
+SELECT * FROM user_data;
+
+12. Finish
+EXIT;
+
+Notes
+- The app currently stores plain-text passwords. That is how the existing code works, but it is not safe for production.
+- The app inserts new rows for user actions instead of updating one user profile row.
+- The login query used by the app is:
+  SELECT * FROM user_data WHERE username = ? AND password = ?;
+- The project expects these env values:
+  DB_HOST=localhost
+  DB_USER=root
+  DB_PASSWORD=your_mysql_password_here
+  DB_NAME=react_mysql_db

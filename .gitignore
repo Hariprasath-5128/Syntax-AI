@@ -1,0 +1,36 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment
+.env
+**/.env
+.env.*
+
+# Node
+node_modules/
+
+# Build
+build/
+dist/
+
+# IDE / Workspace
+*.code-workspace
+.vscode/
+.idea/
+.project
+.settings/
+.classpath
+.factorypath
+bin/
+obj/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+tempCodeRunnerFile.*
+output.txt
