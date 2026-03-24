@@ -1,0 +1,20 @@
+# Python AI Agent Dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -U pip && \
+    pip install --no-cache-dir -r requirements.txt && \
+    python -c "from phi.agent import Agent; from mistralai import Mistral; print('AI libraries installed successfully')"
+
+# Copy source code
+COPY server.py .
+COPY ai_agent.py .
+COPY .env .
+
+# Expose FastAPI port
+EXPOSE 8000
+
+CMD ["uvicorn", "server:app", "--host", "0.0.0.0", "--port", "8000"]

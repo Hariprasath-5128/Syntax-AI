@@ -1,0 +1,40 @@
+services:
+  ai_agent:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "8000:8000"
+    environment:
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+    networks:
+      - syntaxai_default
+
+  node_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "5003:5003"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - AI_AGENT_URL=http://ai_agent:8000/process-request
+    depends_on:
+      - ai_agent
+    networks:
+      - syntaxai_default
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.react
+    ports:
+      - "80:80"
+    depends_on:
+      - node_backend
+    networks:
+      - syntaxai_default
+
+networks:
+  syntaxai_default:
+    driver: bridge

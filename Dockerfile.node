@@ -1,0 +1,20 @@
+# Node.js Backend Dockerfile
+FROM node:18-slim
+
+WORKDIR /app
+
+# Copy the frontend dependencies first (Node server depends on them)
+COPY frontend/package*.json ./frontend/
+
+# Install dependencies in the frontend folder
+RUN cd frontend && npm install --production
+
+# Copy the server file and env
+COPY frontend/src/server.js ./frontend/src/
+COPY .env .
+
+# Expose Node port
+EXPOSE 5003
+
+# Run from the frontend/src directory where server.js expects relative paths
+CMD ["node", "frontend/src/server.js"]
