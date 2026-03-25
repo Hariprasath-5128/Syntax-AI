@@ -6,7 +6,7 @@ from phi.model.mistral import MistralChat
 
 # Load environment variables
 load_dotenv()
-mistral_api_key = os.getenv("MISTRAL_API_KEY")
+mistral_api_key = os.getenv("MISTRAL_API_KEY", "").strip()
 
 # Shared model config (Codestral for coding)
 def mistral_model():

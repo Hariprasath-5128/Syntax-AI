@@ -41,11 +41,11 @@ RUN echo 'server { \
         try_files $uri /index.html; \
     } \
     location /api/ { \
-        proxy_pass http://localhost:5003/; \
+        proxy_pass http://127.0.0.1:5003/; \
         proxy_set_header Host $host; \
     } \
     location /process-request/ { \
-        proxy_pass http://localhost:8000/process-request; \
+        proxy_pass http://127.0.0.1:8000/process-request; \
         proxy_set_header Host $host; \
     } \
 }' > /etc/nginx/sites-available/default

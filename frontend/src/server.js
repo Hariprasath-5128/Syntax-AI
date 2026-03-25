@@ -57,14 +57,16 @@ app.post("/store-option", async (req, res) => {
 
     if (option === "Generate Code") {
       finalPrompt = codePrompt;
-      pythonResponse = await axios.post(process.env.AI_AGENT_URL || "http://localhost:8000/process-request", {
+      const targetUrl = process.env.AI_AGENT_URL || "http://127.0.0.1:8000/process-request";
+      console.log(`📡 Sending request to: ${targetUrl}`);
+      pythonResponse = await axios.post(targetUrl, {
         taskType: "generate",
         prompt: finalPrompt,
       });
     }
     else if (option === "Modify Code") {
       finalPrompt = modifyCode;
-      pythonResponse = await axios.post(process.env.AI_AGENT_URL || "http://localhost:8000/process-request", {
+      pythonResponse = await axios.post(process.env.AI_AGENT_URL || "http://127.0.0.1:8000/process-request", {
         taskType: "modify",
         prompt: finalPrompt,
       });
